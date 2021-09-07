@@ -13,16 +13,69 @@ document.addEventListener("DOMContentLoaded", () => {
     const turnDisplay = document.querySelector("#whose-go");
     const infoDisplay = document.querySelector("#info");
     const userSquares = [];
+    const computerSquares = [];
     const width = 10;
 
-    function creatrBoard() {
+    // create boards
+    function createBoard(grid, squares) {
         for (let i = 0; i < width * width; i++) {
             let square = document.createElement("div");
-            squares, (dataset.id = i);
-            userGrid.appendChild(square);
-            userSquares.push(square);
+            square.dataset.id = i;
+            grid.appendChild(square);
+            squares.push(square);
         }
     }
 
-    creatrBoard();
+    createBoard(userGrid, userSquares);
+    createBoard(computerGrid, computerSquares);
+
+    //ships
+    const shipArray = [
+        {
+            name: "destroyer",
+            directions: [
+                [0, 1],
+                [0, width],
+            ],
+        },
+        {
+            name: "submarine",
+            directions: [
+                [0, 1, 2],
+                [0, width, width * 2],
+            ],
+        },
+        {
+            name: "cruiser",
+            directions: [
+                [0, 1, 2],
+                [0, width, width * 2],
+            ],
+        },
+
+        {
+            name: "battleship",
+            directions: [
+                [0, 1, 2, 3],
+                [0, width, width * 2, width * 3],
+            ],
+        },
+        {
+            name: "carrier",
+            directions: [
+                [0, 1, 2, 3, 4],
+                [0, width, width * 2, width * 3, width * 4],
+            ],
+        },
+    ];
+
+    // generate ships in random locations
+    function generate(ship) {
+        let randomDirection = math.floor(
+            math.random() * ship.directions.length
+        );
+        let currentDirection = ship.directions[randomDirection];
+        if (randomDirection === 0) direction = 1;
+        if (randomDirection === 1) direction = 10;
+    }
 });
